@@ -20,6 +20,18 @@ use IEEE.STD_LOGIC_1164.all;
 
 package globals is
     subtype byte_t is std_logic_vector(7 downto 0);
+
+    -- register interface
+    --constant REG_ADDR_W : integer := 5;
+
+    subtype reg_addr_t is std_logic_vector(REG_ADDR_W - 1 downto 0);
+    constant reg_addr_invl : std_logic_vector(REG_ADDR_W - 1 downto 0) := ( others => '1' );
+
+    type reg_bus_t is record
+        wr   : std_logic;
+        data : byte_t;
+        addr : reg_addr_t;
+    end record reg_bus_t;
 end globals;
 
 package body globals is
