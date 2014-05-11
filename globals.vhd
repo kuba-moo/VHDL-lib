@@ -15,47 +15,12 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
-use IEEE.STD_LOGIC_ARITH.all;
-use IEEE.STD_LOGIC_UNSIGNED.all;
-use work.globals.all;
 
--- short description
+-- globals for projects using my modules
 
-entity __TMPL__ is
-    port (Clk : in std_logic;
-          Rst : in std_logic);
-end __TMPL__;
+package globals is
+    subtype byte_t is std_logic_vector(7 downto 0);
+end globals;
 
--- Operation:
---
-
-architecture Behavioral of __TMPL__ is
-
-    type state_t is (IDLE);
-
-    signal state, NEXT_state : state_t;
-
-begin
-
-    NEXT_fsm : process (state)
-    begin
-        NEXT_state <= state;
-
-        case state is
-            when IDLE =>
-
-        end case;
-    end process;
-
-    fsm : process (Clk)
-    begin
-        if rising_edge(Clk) then
-            state <= NEXT_state;
-
-            if Rst = '1' then
-                state <= IDLE;
-            end if;
-        end if;
-    end process;
-
-end Behavioral;
+package body globals is
+end globals;
