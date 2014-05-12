@@ -22,7 +22,7 @@ use work.globals.all;
 
 -- UART interface for registers
 
-entity uart_reg is
+entity reg_master_uart is
     generic (REQ_SIZE : integer);       -- #bytes per req
 
     port (Clk     : in  std_logic;
@@ -34,7 +34,7 @@ entity uart_reg is
           TxBusy  : in  std_logic;
           BusO    : out reg_bus_t;
           BusI    : in  reg_bus_t);
-end uart_reg;
+end reg_master_uart;
 
 -- Operation:
 --   1. receive Request from UART;
@@ -62,7 +62,7 @@ end uart_reg;
 -- WARNING: generating ny operation targeting invalid address (read or write
 --          that encompasses address with all 1's) will HUNG the bus master!!!
 
-architecture Behavioral of uart_reg is
+architecture Behavioral of reg_master_uart is
 
     constant REQ_HDR_LEN : integer := integer(ceil(real(1 + REG_ADDR_W)/8.0));
     constant REQ_MAX_LEN : integer := REQ_HDR_LEN + REQ_SIZE;
