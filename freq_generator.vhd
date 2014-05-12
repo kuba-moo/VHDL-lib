@@ -17,12 +17,13 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.STD_LOGIC_ARITH.all;
 use IEEE.STD_LOGIC_UNSIGNED.all;
+use work.globals.all;
 
 -- Generate '1' on @Output with given @FREQUENCY
 
 entity freq_generator is
-    generic (FREQUENCY     : integer;
-             CLK_FREQUENCY : integer := 100000000);  -- 100 MHz
+    generic (FREQUENCY     : integer; -- target freq
+             CLK_FREQUENCY : integer := FPGA_CLK_FREQ);
 
     port (Clk    : in  std_logic;
           Rst    : in  std_logic;

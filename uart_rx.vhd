@@ -23,8 +23,7 @@ use work.globals.all;
 -- UART receive
 
 entity uart_rx is
-    generic (FREQUENCY     : integer;
-             CLK_FREQUENCY : integer := 100000000);  -- 100 MHz
+    generic (FREQUENCY     : integer);
 
     port (Clk   : in  std_logic;
           Rst   : in  std_logic;
@@ -39,7 +38,7 @@ end uart_rx;
 
 architecture Behavioral of uart_rx is
 
-    constant CLK_MAX    : integer := CLK_FREQUENCY/FREQUENCY;
+    constant CLK_MAX    : integer := FPGA_CLK_FREQ/FREQUENCY;
     constant CLK_SAMPLE : integer := CLK_MAX/2;
     type a2_byte is array(1 downto 0) of byte_t;
     type state_t is (IDLE, START, RX, STOP);

@@ -19,6 +19,8 @@ use IEEE.STD_LOGIC_1164.all;
 -- globals for projects using my modules
 
 package globals is
+    constant FPGA_CLK_FREQ : integer := 100000000; -- 100 MHz
+
     subtype byte_t is std_logic_vector(7 downto 0);
 
     -- register interface
